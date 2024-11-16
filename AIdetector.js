@@ -19,8 +19,8 @@ document.getElementById('uploadButton').addEventListener('click', async () => {
     reader.readAsDataURL(file);
 
     // Imagga API credentials
-    const apiKey = 'acc_d029700d0ace49d';
-    const apiSecret = 'f2a603c0d5f4e53f626bd954a67c25f9';
+    const apiKey = '';
+    const apiSecret = '';
     const authHeader = 'Basic ' + btoa(`${apiKey}:${apiSecret}`);
 
     // Prepare data for upload
@@ -33,7 +33,7 @@ document.getElementById('uploadButton').addEventListener('click', async () => {
         uploadProgress.style.width = '0%';
 
         // Upload image to Imagga
-        const uploadResponse = await fetch('https://api.imagga.com/v2/uploads', {
+        const uploadResponse = await fetch('', {
             method: 'POST',
             headers: { 'Authorization': authHeader },
             body: formData
@@ -69,8 +69,8 @@ document.getElementById('uploadButton').addEventListener('click', async () => {
 
         // Fetch color and tag analysis from Imagga
         const [colorResult, tagsResult] = await Promise.all([
-            fetch(`https://api.imagga.com/v2/colors?image_upload_id=${upload_id}`, { headers: { 'Authorization': authHeader } }).then(res => res.json()),
-            fetch(`https://api.imagga.com/v2/tags?image_upload_id=${upload_id}`, { headers: { 'Authorization': authHeader } }).then(res => res.json()),
+            fetch(`=${upload_id}`, { headers: { 'Authorization': authHeader } }).then(res => res.json()),
+            fetch(`=${upload_id}`, { headers: { 'Authorization': authHeader } }).then(res => res.json()),
         ]);
 
         // Display the results
